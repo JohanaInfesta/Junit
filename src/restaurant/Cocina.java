@@ -3,7 +3,9 @@ package restaurant;
 import java.util.List;
 
 public class Cocina  extends Thread {
+	
 	static List<Pedido> pedidos;
+	
 	static public void setPedidos(List<Pedido> pedidos) {
 		Cocina.pedidos=pedidos;
 	}

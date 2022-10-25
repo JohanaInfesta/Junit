@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ public class PedidoTest {
 		usuarioDefault = new Usuario("bolita hernandez", 0, 300, "mail");
 		pedidoDefault = new Pedido(items, usuarioDefault);
 	}
-	
+	//d
 	@Test
 	public void verificarReduccionSaldo() throws Exception {
 		float total=pedidoDefault.totalPedido();
@@ -32,6 +33,18 @@ public class PedidoTest {
 		pedidoDefault.getUsuario().descontarSaldo(total);
 		assertEquals(saldoOriginal-total, usuarioDefault.getSaldo());
 	}
-	
+	//e
+	@Test
+	public void verificarGanancia() {
+		float precioCompra = 0.0f;
+		for (ItemPedido itemPedido : items) {
+			precioCompra += (itemPedido.getCantidad())*itemPedido.getItem().getPrecioUnitarioCompra();
+		}
+		float precioVenta = pedidoDefault.totalPedido();
+		if((20.0 * precioCompra/100 + precioCompra)>precioVenta)
+			fail();
+		else
+			assert(1+1==2);
+	}
 	
 }
